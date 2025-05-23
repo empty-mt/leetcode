@@ -86,6 +86,7 @@ impl Solution {
 }
 
 fn main() {
+    // passed
     assert_eq!(Solution::reverse(-2_147_483_648), 0);
     assert_eq!(Solution::reverse(2_147_483_647), 0);
     assert_eq!(Solution::reverse(-120001000), -100021);
@@ -98,4 +99,6 @@ fn main() {
     assert_eq!(Solution::reverse(123), 321);
     assert_eq!(Solution::reverse(-120030090), -90030021);
     assert_eq!(Solution::reverse(1563847412), 0);
+    // not passed
+    assert_eq!(Solution::reverse(-2147483412), -2143847412);
 }
