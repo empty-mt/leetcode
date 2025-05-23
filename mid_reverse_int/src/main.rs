@@ -2,7 +2,7 @@ use std::collections::VecDeque;
 
 struct Solution;
 impl Solution {
-    pub fn concat(vec: &VecDeque<char>) -> u32 {
+    pub fn concat(vec: &VecDeque<char>) -> i32 {
         /*   
 
         // use try_fold()
@@ -20,20 +20,19 @@ impl Solution {
         )
         */
         
-        let mut acc: u32 = 0;
+        let mut acc: i32 = 0;
         for elem in vec {
-                acc *= 10;
-                acc += elem.to_digit(10).unwrap();
-                match (acc.checked_add(elem.to_digit(10).unwrap()), acc.checked_mul(10)) {
-                    (Some(a), Some(_b)) =>  a,
-                    (Some(_a), None)         => {acc = 0; break},
-                    (None, Some(_a))         => {acc = 0; break},
-                    (None, None)                => {acc = 0; break},
-                    
-                };
-            }
-            // println!("fin {acc}");
-            acc
+            match (acc.checked_add(elem.to_digit(10).unwrap() as i32) , acc.checked_mul(10)) {
+                (Some(a), Some(_b)) =>  a,
+                (Some(_a), None)    => {acc = 0; break},
+                (None, Some(_a))    => {acc = 0; break},
+                (None, None)    => {acc = 0; break},
+                
+            };
+            acc *= 10;
+            acc += elem.to_digit(10).unwrap() as i32;
+        }
+        acc
     }
     pub fn reverse(x: i32) -> i32 {
         let mut cnt: i32 = 0;
@@ -86,6 +85,8 @@ impl Solution {
 }
 
 fn main() {
+    /* 
+    */
     // passed
     assert_eq!(Solution::reverse(-2_147_483_648), 0);
     assert_eq!(Solution::reverse(2_147_483_647), 0);
@@ -98,7 +99,10 @@ fn main() {
     assert_eq!(Solution::reverse(-5), -5);
     assert_eq!(Solution::reverse(123), 321);
     assert_eq!(Solution::reverse(-120030090), -90030021);
-    assert_eq!(Solution::reverse(1563847412), 0);
-    // not passed
     assert_eq!(Solution::reverse(-2147483412), -2143847412);
+    // not passed
+    assert_eq!(Solution::reverse(1563847412), 0);
+    assert_eq!(Solution::reverse(1534236469), 0);
+    assert_eq!(Solution::reverse(-1563847412), 0);
+
 }
