@@ -1,0 +1,6 @@
+[package]
+name = "mid_longest_palindromic_substr"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
