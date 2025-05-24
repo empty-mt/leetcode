@@ -1,0 +1,6 @@
+[package]
+name = "easy_index_of_first_occur_in_str"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
