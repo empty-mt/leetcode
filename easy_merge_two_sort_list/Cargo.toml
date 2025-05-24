@@ -1,0 +1,6 @@
+[package]
+name = "easy_merge_two_sort_list"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]

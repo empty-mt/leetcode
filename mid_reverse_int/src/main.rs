@@ -49,8 +49,7 @@ impl Solution {
             .rev()
             .map(|ch| ch)
             .collect();
-        // println!("collect:\t {num_vec:?}");
-    
+
         // cut all front 0
         loop {
             if num_vec.get(cnt as usize) == Some(&'0') {
@@ -62,7 +61,6 @@ impl Solution {
         for _ in 0..cnt {
             num_vec.pop_front();
         }
-        // println!("rm 0s:\t\t {num_vec:?}");
         
         // check if last '-' and rm
         // num_vec.retain(|ch| *ch != '-'); 
@@ -70,24 +68,18 @@ impl Solution {
             is_negative = true;
             num_vec.pop_back();
         }
-        // println!("rm - :\t\t {num_vec:?}");
         
         // char vec -> int
         result = Self::concat(&num_vec) as i32;
-        // println!("concat :\t\t {result:?}");
         if is_negative {
             result = i32::from(result) * -1; 
         }
-        // println!("vec as int:\t {result:?} from {:?}", x);
 
         result
     }
 }
 
 fn main() {
-    /* 
-    */
-    // passed
     assert_eq!(Solution::reverse(-2_147_483_648), 0);
     assert_eq!(Solution::reverse(2_147_483_647), 0);
     assert_eq!(Solution::reverse(-120001000), -100021);
@@ -100,9 +92,7 @@ fn main() {
     assert_eq!(Solution::reverse(123), 321);
     assert_eq!(Solution::reverse(-120030090), -90030021);
     assert_eq!(Solution::reverse(-2147483412), -2143847412);
-    // not passed
     assert_eq!(Solution::reverse(1563847412), 0);
     assert_eq!(Solution::reverse(1534236469), 0);
     assert_eq!(Solution::reverse(-1563847412), 0);
-
 }
