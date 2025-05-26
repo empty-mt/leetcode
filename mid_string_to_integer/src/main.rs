@@ -1,4 +1,3 @@
-
 impl Solution {
     pub fn my_atoi(s: String) -> i32 {
         let mut is_negative: bool  = false;
@@ -49,14 +48,12 @@ impl Solution {
         // convert str, check overflow
         match str.parse::<i32>() {
             Ok(a) => a,
-            Err(_) => {
-                if is_negative {
-                    return i32::MIN;
-                }
-                i32::MAX 
+            Err(msg) => match msg.kind() {
+                std::num::IntErrorKind::PosOverflow => i32::MAX,
+                std::num::IntErrorKind::NegOverflow => i32::MIN,
+                _ => 0
             }
         }
-        
     }
 }
 
@@ -92,5 +89,3 @@ pub fn main() {
     assert_eq!(Solution::my_atoi("+91283472332".to_string()), 2147483647);
     assert_eq!(Solution::my_atoi("91283472332".to_string()), 2147483647);
 }
-
-
