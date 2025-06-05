@@ -40,7 +40,7 @@ impl Solution {
             }
             // (result += 1 << 8) == (0 + 256)
             result += 1 << shift_cnt;
-            // (dend -= 2 << 9) == (1000 - 512) == 488
+            // (dend -= 2 << 8) == (1000 - 512) == 488
             dend -= dsor << shift_cnt;
             // ### 2nd loop ###
             //
