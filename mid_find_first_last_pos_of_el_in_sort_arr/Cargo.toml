@@ -1,0 +1,6 @@
+[package]
+name = "mid_find_first_last_pos_of_el_in_sort_arr"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
